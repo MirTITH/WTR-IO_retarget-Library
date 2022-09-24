@@ -4,7 +4,7 @@ WTRobot HITsz
 
 ## 介绍
 
-将stdout、stderr和stdin重定向到串口，这样就可以开心地使用 printf() 和 scanf() 了
+在 STM32 平台，将stdout、stderr和stdin重定向到串口，这样就可以开心地使用 printf() 和 scanf() 了
 
 （当然也可以使用 std::cout、std::cerr 和 std::cin，如果写 C++ 的话）
 
@@ -25,7 +25,7 @@ WTRobot HITsz
 ## 轻松移植
 1. 将 `io_retargetToUart.c` 和 `io_retargetToUart.h` 添加到你的工程中
 2. 在 CubeMX 里初始化串口
-   - 不使用接收缓冲区：不需要打开串口全局中断
+   - 不使用接收缓冲区：不需要打开串口全局中断，不需要额外调用函数
    - 使用接收缓冲区：
      1. 打开串口全局中断
      2. 在代码中调用 `void IORetarget_Uart_Receive_IT()`
@@ -61,7 +61,7 @@ WTRobot HITsz
 ### 3.6
 - 优化：进行了微小的代码格式化
 
-### 3,5
+### 3.5
 - 修复：修复接收大量数据时，有概率发生 Overrun 错误的问题
 - 新增：接收缓冲区
 
